@@ -104,6 +104,13 @@ namespace LiteDB.Tests.Expressions
                 return BsonExpression.Create(s, args).ExecuteScalar(doc);
             }
 
+            // Arithmetic operators
+            doc = new BsonDocument();
+            S("6 + 3").ExpectValue(9);
+            S("6 * 3").ExpectValue(18);
+            S("6 % 3").ExpectValue(0);
+            S("6 / 3").ExpectValue(2);
+
             // Operators order
             doc = J("{ a: 1, b: 2, c: 3 }");
 
